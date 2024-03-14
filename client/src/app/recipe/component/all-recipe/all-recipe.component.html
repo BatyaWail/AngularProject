@@ -70,8 +70,11 @@
     </div>
   
     <div *ngFor="let recipe of filteredRecipes" id="flex"
-         style="display: grid; grid-gap: 20px; justify-content: space-evenly;">
-      <app-small-recipe [recipeChild]="recipe"></app-small-recipe>
+         style="display: grid; grid-gap: 20px; justify-content: space-evenly; ">
+         <!-- <div style="flex: 1 0 auto; margin: 0; padding: 0;"> 
+            display: flex; flex-wrap: wrap;-->
+      <app-small-recipe [recipeChild]="recipe" ></app-small-recipe>
+    <!-- </div> -->
     </div>
   </div>
   

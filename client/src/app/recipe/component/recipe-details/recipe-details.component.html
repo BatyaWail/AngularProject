@@ -1,4 +1,4 @@
-<div class="card mb-3" id="recipe-details">
+<div class="card mb-3 container card" id="recipe-details">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="{{ recipeDetails.imgRouting }}" alt="{{ recipeDetails.name }}"
@@ -15,17 +15,16 @@
             class="img-fluid rounded-start" id="icon-categort" >
         </div>
         <ng-container *ngIf="recipeDetails.difficultyLevel">
-          <div class="difficulty-stars">difficultyLevel: 
+          <ng-container class="difficulty-stars">difficultyLevel: 
             <span *ngFor="let star of this.getDifficultyStars(recipeDetails.difficultyLevel)">*</span>
-          </div>
+          </ng-container>
         </ng-container>
         <p>Preparation time: {{ recipeDetails.minutes | formatTime }}</p>
 
         <ng-container *ngIf="recipeDetails.ingredients" >ingredients: 
           <div *ngFor="let item of recipeDetails.ingredients">
-            <img *ngIf="item" src="{{item.icon}}" alt="{{item}}" class="component-icon" />
-            <img *ngIf="item" src="{{item}}" alt="{{item}}" class="component-icon" />
-
+            <!-- <img *ngIf="item" src="{{item.icon}}" alt="{{item}}" class="component-icon" /> -->
+            {{item}}
           </div>
         </ng-container>
         instructions: 
@@ -38,15 +37,74 @@
         </p>
       </div>
     </div>
+    <div class="btn-group shadow-0" role="group" aria-label="Basic example" *ngIf="currentUserName==recipeDetails.user">
+      <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark" (click)="deleteRecipe()">
+        delete
+      </button>
+      <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark" (click)="editRecipe()">
+        edit
+      </button>
+    </div>
   </div>
-  <div class="btn-group shadow-0" role="group" aria-label="Basic example" *ngIf="currentUserName==recipeDetails.user">
-    <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark" (click)="deleteRecipe()">
-      delete
-    </button>
-    <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark" (click)="editRecipe()">
-      edit
-    </button>
   </div>
-  <!-- <button *ngIf="currentUserName==recipeDetails.user" mdbRipple type="button" class="btn btn-primary btn-block mb-4" 
-  (click)="deleteRecipe()" >delete the recipe</button> -->
-</div>
+
+<!-- 
+<div class="container" id="mtContainer" style="position: fixed;left: 0;right: 0;">
+  <section class="mx-auto my-5" style="max-width: 23rem;">
+      
+    <div class="card">
+      <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" class="img-fluid" />
+        <a href="#!">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold"><a>La Sirena restaurant</a></h5>
+        <ul class="list-unstyled list-inline mb-0">
+          <li class="list-inline-item me-0">
+            <i class="fas fa-star text-warning fa-xs"> </i>
+          </li>
+          <li class="list-inline-item me-0">
+            <i class="fas fa-star text-warning fa-xs"></i>
+          </li>
+          <li class="list-inline-item me-0">
+            <i class="fas fa-star text-warning fa-xs"></i>
+          </li>
+          <li class="list-inline-item me-0">
+            <i class="fas fa-star text-warning fa-xs"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fas fa-star-half-alt text-warning fa-xs"></i>
+          </li>
+          <li class="list-inline-item">
+            <p class="text-muted">4.5 (413)</p>
+          </li>
+        </ul>
+        <p class="mb-2">$ • American, Restaurant</p>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the bulk of the
+          card's content.
+        </p>
+        <hr class="my-4" />
+        <p class="lead"><strong>Tonight's availability</strong></p>
+        <ul class="list-unstyled list-inline d-flex justify-content-between">
+          <li class="list-inline-item me-0">
+            <div class="chip me-0">5:30PM</div>
+          </li>
+          <li class="list-inline-item me-0">
+            <div class="chip bg-secondary text-white me-0">7:30PM</div>
+          </li>
+          <li class="list-inline-item me-0">
+            <div class="chip me-0">8:00PM</div>
+          </li>
+          <li class="list-inline-item me-0">
+            <div class="chip me-0">9:00PM</div>
+          </li>
+        </ul>
+        <a href="#!" class="btn btn-link link-secondary p-md-1 mb-0">Button</a>
+      </div>
+    </div>
+    
+  </section>
+</div> -->

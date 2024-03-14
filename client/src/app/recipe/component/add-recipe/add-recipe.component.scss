@@ -1,88 +1,102 @@
-/* סגנון כללי */
+// /* סגנון כללי */
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-}
+// body {
+//   font-family: Arial, sans-serif;
+//   margin: 0;
+//   padding: 20px;
+// }
 
-/* סגנון טופס */
+// /* סגנון טופס */
 
-.form-group {
-  margin-bottom: 15px;
-}
+// .form-group {
+//   margin-bottom: 15px;
+// }
 
-.form-control {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+// .form-control {
+//   width: 100%;
+//   padding: 5px;
+//   border: 1px solid #ccc;
+//   border-radius: 4px;
+// }
 
-.form-select {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+// .form-select {
+//   width: 100%;
+//   padding: 5px;
+//   border: 1px solid #ccc;
+//   border-radius: 4px;
+// }
 
-/* סגנון כותרות */
+// /* סגנון כותרות */
 
-h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
+// h3 {
+//   margin-top: 20px;
+//   margin-bottom: 10px;
+// }
 
-/* סגנון רשימת מרכיבים */
+// /* סגנון רשימת מרכיבים */
 
-.ingredient-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-}
+// .ingredient-item {
+//   display: flex;
+//   align-items: center;
+//   margin-bottom: 5px;
+// }
 
-.ingredient-item .form-control {
-  flex-grow: 1;
-  margin-right: 10px;
-}
+// .ingredient-item .form-control {
+//   flex-grow: 1;
+//   margin-right: 10px;
+// }
 
-.ingredient-item .btn {
-  margin-left: 5px;
-}
+// .ingredient-item .btn {
+//   margin-left: 5px;
+// }
 
-/* סגנון רשימת הוראות */
+// /* סגנון רשימת הוראות */
 
-.instruction-item {
-  margin-bottom: 5px;
-}
+// .instruction-item {
+//   margin-bottom: 5px;
+// }
 
-.instruction-item .form-control {
-  height: 100px;
-}
+// .instruction-item .form-control {
+//   height: 100px;
+// }
 
-/* סגנון כפתורים */
+// /* סגנון כפתורים */
 
-.btn {
-  margin-right: 10px;
-}
+// .btn {
+//   margin-right: 10px;
+// }
 
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-}
+// .btn-primary {
+//   background-color: #007bff;
+//   color: #fff;
+// }
 
-.btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-}
+// .btn-danger {
+//   background-color: #dc3545;
+//   color: #fff;
+// }
 
-#id {
-  width: 10vh;
-  height: 15vh;
-}
+// #id {
+//   width: 10vh;
+//   height: 15vh;
+// }
+
+
 form{
   padding-top: 10vh;
-  padding-left: 50vh;
-  padding-right: 50vh;
+  // padding-left: 50vh;
+  // padding-right: 50vh;
 
 }
+
+
+/* Add this to your component's CSS */
+.recipe-form-container {
+  margin: 0 auto;
+  width: 60%; /* Adjust the width as needed */
+}
+.mat-form-field {
+  margin: 0;
+  padding: 0;
+}
+

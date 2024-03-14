@@ -1,7 +1,7 @@
 <h1>{{recipeDetails.name}}</h1>
-<form [formGroup]="recipeForm" >
+<form [formGroup]="recipeForm" style="display: flex; flex-wrap: wrap;" >
   <br/>
-    <mat-form-field>
+    <mat-form-field style="display: flex; flex-wrap: wrap;">
       <mat-select formControlName="category" placeholder="category" required>
         <mat-option *ngFor="let category of categories" [value]="category.name">
           {{ category.name }}
@@ -9,7 +9,7 @@
       </mat-select>
     </mat-form-field>
     <br/>
-    <mat-form-field>
+    <mat-form-field style="display: flex; flex-wrap: wrap;">
       <input
         matInput
         type="number"
@@ -19,7 +19,7 @@
       >
     </mat-form-field>
     <br/>
-    <mat-form-field>
+    <mat-form-field style="display: flex; flex-wrap: wrap;">
       <mat-select formControlName="difficultyLevel" placeholder="difficultyLevel" required>
         <mat-option value="1">easy</mat-option>
         <mat-option value="2">medium</mat-option>
@@ -29,7 +29,7 @@
     <br/>
     <button mat-raised-button color="primary" type="button" (click)="addIngredient()">add ingredient</button>
   
-    <div formArrayName="ingredients">
+    <div formArrayName="ingredients" style="display: flex; flex-wrap: wrap;">
       <div *ngFor="let item of recipeDetails.ingredients "> {{this.addIngredient(item.icon)}}</div>
 
       <div *ngFor="let ingredient of recipeForm.get('ingredients').controls; let i = index">
@@ -44,7 +44,7 @@
     <br/>
   
     <button mat-raised-button color="primary" type="button" (click)="addInstruction()">add instruction</button>
-   <div formArrayName="instructions">
+   <div formArrayName="instructions" style="display: flex; flex-wrap: wrap;">
     <div *ngFor="let item of recipeDetails.instructions "> {{this.addInstruction(item)}}</div>
       <div *ngFor="let instruction of recipeForm.get('instructions').controls; let i = index">
         <mat-form-field>
@@ -59,7 +59,7 @@
     <br/>
   
   
-    <mat-form-field>
+    <mat-form-field style="display: flex; flex-wrap: wrap;">
       <input matInput formControlName="imgRouting" placeholder="imagePath(Optional)" required="" >
     </mat-form-field>
     <br/>
