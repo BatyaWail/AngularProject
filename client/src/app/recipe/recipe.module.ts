@@ -53,7 +53,6 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 
-// import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 @NgModule({
@@ -63,15 +62,9 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
     CommonModule,HttpClientModule
     ,RecipeRoutingModule,
     MatCardModule, MatButtonModule,
-    // CommonModule,
      CardModule,
     ReactiveFormsModule, 
-    // BrowserModule
     FormsModule, AlertModule
-    // , BrowserAnimationsModule
-
-    // BrowserAnimationsModule
-    // AlertModule
     ,MdbFormsModule,
     CommonModule,
     FormsModule,
@@ -88,8 +81,6 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
     MatChipsModule,
     MatNativeDateModule,
     MatDatepickerModule,FormatTimePipe,
-
-
     MdbAccordionModule,
     MdbCarouselModule,
     MdbCheckboxModule,
@@ -105,7 +96,6 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
-    // MDBBootstrapModule.forRoot()
 
   ],
   exports:[AllRecipeComponent,AddRecipeComponent,EditRecipeComponent,SmallRecipeComponent,RecipeDetailsComponent]

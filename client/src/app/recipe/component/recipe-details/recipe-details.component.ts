@@ -5,12 +5,9 @@ import { RecipeService } from '../../recipe.service';
 import { Category } from '../../../classes/category.class';
 import { CategoryService } from '../../../category.service';
 import Swal from 'sweetalert2';
-// import { FormatTimePipe } from '../../../format-time.pipe';
-// import "../../../../assets/top-view-baking-ingredients_217819-57.jpg"
 @Component({
   selector: 'app-recipe-details',
-  // standalone: true,
-  // imports: [],
+
   templateUrl: './recipe-details.component.html',
   styleUrl: './recipe-details.component.scss'
 })
@@ -22,6 +19,7 @@ export class RecipeDetailsComponent implements OnInit {
 
   public category!: Category
   public categoryName!: string
+  public allDificulltyLevel = 3;
 
   constructor(private route: ActivatedRoute,
     private router: Router
@@ -29,18 +27,13 @@ export class RecipeDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((param) => {
       this.recipeId = param['id'];
-      console.log("this.recipeId", this.recipeId)
       this._recipeService.getRecipeById(this.recipeId).subscribe({
         next: (res) => {
           this.recipeDetails = res
-          console.log("11111resipeDetails", this.recipeDetails)
           this.currentUserName = sessionStorage.getItem("currentUserName")?.toString()
-          // this.recipeOwner = this.recipeDetails.user
-          console.log("1111111", this.recipeDetails)
           this._categoryService.getCategoryByName(this.recipeDetails.category).subscribe({
             next: (res) => {
               this.category = res
-              console.log("category----------------", this.category)
             },
             error: (err) => {
               console.log(err);
@@ -52,12 +45,6 @@ export class RecipeDetailsComponent implements OnInit {
         }
       })
     })
-    // .then(() => {
-    //   this.toHome()
-    // });
-
-
-
   }
   getDifficultyStars(difficultyLevel: number): string[] {
     const stars = [];
@@ -67,20 +54,6 @@ export class RecipeDetailsComponent implements OnInit {
     return stars;
   }
   deleteRecipe() {
-    
-
-    
-    // this._recipeService.remove(this.recipeDetails.id).subscribe({
-    //   next: (res) => {
-    //     // this.recipeDetails = res;
-    //     console.log(res)
-        
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //   }
-    // });
-    // this.router.navigate(["recipe/all-recipe"]);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -89,24 +62,23 @@ export class RecipeDetailsComponent implements OnInit {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!"
-    }).then((result)=>{
+    }).then((result) => {
       if (result.isConfirmed) {
-      this._recipeService.remove(this.recipeDetails.id).subscribe({
-        next: (res) => {
-          // this.recipeDetails = res;
-          console.log(res)
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your recipe has been deleted.",
-            icon: "success"
-          });
-          this.router.navigate(["recipe/all-recipe"]);
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
-    }
+        this._recipeService.remove(this.recipeDetails.id).subscribe({
+          next: (res) => {
+            console.log(res)
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your recipe has been deleted.",
+              icon: "success"
+            });
+            this.router.navigate(["recipe/all-recipe"]);
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        });
+      }
     })
   }
   editRecipe() {

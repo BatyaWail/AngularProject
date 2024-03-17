@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 })
 export class CategoryService {
   public baseUrlCategory='https://localhost:7100/api/Category'
-  // public baseUrlCategory='https://localhost:7196/api/Catgory'
 
   constructor(private http: HttpClient) { }
   getAllCategory(): Observable<Category[]> {

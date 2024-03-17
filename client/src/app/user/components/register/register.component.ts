@@ -61,7 +61,6 @@ export class RegisterComponent {
             icon: "info",
             title: "Oops...",
             text: "User registered in the system, transferred to the login page!!!",
-            // footer: '<a href="#">Why do I have this issue?</a>'
           });
           sessionStorage.setItem('isGetFromRgister', 'true')
           this.router.navigate(["user/login"])
@@ -69,30 +68,8 @@ export class RegisterComponent {
         else {
           this._userService.addUser(this.RegisterForm.value).subscribe({
             next: (res) => {
-              // console.log(res);
               this.registeruser = res;
               console.log(this.registeruser)
-              // Swal.fire({
-              //   title: 'you register!!!!',
-              //   html: 'Transferred to show the recipes',
-              //   timer: 2000,
-              //   timerProgressBar: true,
-              //   didOpen: () => {
-              //     Swal.showLoading(null);
-              //     this.timer = Swal
-              //     this.timerInterval = setInterval(() => {
-              //       this.timer.textContent = `${Swal.getTimerLeft()}`;
-              //     }, 100);
-              //   },
-              //   willClose: () => {
-              //     clearInterval(this.timerInterval);
-              //   }
-              // }).then((result) => {
-              //   if (result.dismiss === Swal.DismissReason.timer) {
-              //     console.log('I was closed by the timer');
-              //   }
-              // });
-              // this.router.navigate(["recipe"])
               this.enterToWeb()
 
             },
@@ -112,7 +89,6 @@ export class RegisterComponent {
 
   }
   enterToWeb() {
-      console.log("this.path",this.path)
       if (this.path ===undefined) {
         console.log("go to recipy");
         Swal.fire({
@@ -140,9 +116,7 @@ export class RegisterComponent {
       else{
         let id=sessionStorage.getItem("recipe-details")
         console.log(id)
-        // this.router.navigate([`${{this.path}}`])
         if(id!=null){
-          console.log("id",id)
           this.router.navigate(["recipe/recipe-details/", parseInt(id)]);
         }
         else if(sessionStorage.getItem("add-recipe")==="true"){

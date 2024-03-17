@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
   public baseUrl='https://localhost:7100/api/User'
-  // public baseUrl='https://localhost:7196/api/User'
 
   constructor(private http: HttpClient) { }
   getUserByName(name: string): Observable<User> {
@@ -16,11 +15,9 @@ export class UserService {
   }
 
   addUser(user: User):Observable<User> {
-    // this.productsList.push(product)
     return this.http.post<User>(this.baseUrl, user)
   }
   deleteUser(name: string):Observable<User> {
-    // this.productsList.push(product)
     return this.http.delete<User>(`${this.baseUrl}/${name}`)
   }
 

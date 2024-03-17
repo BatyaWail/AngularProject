@@ -15,7 +15,6 @@ const RECIPE_ROUTES: Route[] = [
   {path:'recipe-details/:id',component:RecipeDetailsComponent},
   {path:'edit-recipe/:id',component:EditRecipeComponent}
 
-  ///////להמשיך
 ]
 
 @NgModule({

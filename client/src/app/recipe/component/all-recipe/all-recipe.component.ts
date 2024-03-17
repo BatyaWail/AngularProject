@@ -41,16 +41,6 @@ import { CategoryService } from '../../../category.service';
   styleUrls: ['./all-recipe.component.scss']
 })
 export class AllRecipeComponent implements OnInit {
-  options = [
-    { value: '1', label: 'One' },
-    { value: '2', label: 'Two' },
-    { value: '3', label: 'Three' },
-    { value: '4', label: 'Four' },
-    { value: '5', label: 'Five' },
-    { value: '6', label: 'Six' },
-    { value: '7', label: 'Seven' },
-    { value: '8', label: 'Eigth' },
-  ];
   allRecipes!: Recipe[];
   categories!: Category[];
   filteredRecipes!: Recipe[];
@@ -58,6 +48,8 @@ export class AllRecipeComponent implements OnInit {
   filterName = '';
   filterCategory = '';
   filterDuration = 0;
+  showFilters: boolean = false;
+
 
   constructor(private _recipeService: RecipeService,private _categoryService:CategoryService) {}
 
@@ -80,7 +72,9 @@ export class AllRecipeComponent implements OnInit {
       error: (err) => console.log(err)
     });
   }
-
+  toggleFilters() {
+    this.showFilters = !this.showFilters;
+  }
   filterRecipes(): void {
     this.filteredRecipes = this.allRecipes.filter((recipe) => {
       return (

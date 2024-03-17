@@ -1,41 +1,10 @@
-// /* footer.css */
-
-/* Add padding-bottom to create space for the fixed footer */
 :host {
     display: block;
     padding-bottom: 15vh;
 }
-
-// .container {
-//     padding-bottom: 20vh; /* Adjust the value based on your footer's height */
-//   }
-
 footer {
     max-height: 20vh;
     position: fixed;
     bottom: 0;
     width: 100%;
-        // flex-direction: column;
-
 }
-// .text-center.p-3 {
-//     flex-grow: 1;
-// }
-
-/* footer.css */
-
-// /* Add padding-bottom to create space for the fixed footer */
-// .container {
-//     padding-bottom: 70px;
-//     /* Adjust the value based on your footer's height */
-// }
-
-// footer {
-//     max-height: 20vh;
-//     display: flex;
-//     flex-direction: column;
-// }
-
-// .text-center.p-3 {
-//     flex-grow: 1;
-// }

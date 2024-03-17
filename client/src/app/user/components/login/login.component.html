@@ -1,30 +1,26 @@
 <form [formGroup]="this.LoginForm">
-    <br/>
-    <!-- Email input -->
-    <mdb-form-control class="mb-4" >
+    <br />
+    <mat-icon>person</mat-icon>
+    <mdb-form-control class="mb-4">
         <input mdbInput type="text" formControlName="name" id="form2Example1" class="form-control">
-        <!-- <input mdbInput type="email" id="form2Example1" class="form-control" /> -->
         <label mdbLabel class="form-label" for="form2Example1">UserName</label>
     </mdb-form-control>
     <ng-container *ngIf="this.LoginForm.controls['name'].errors as nameError">
-        <p *ngIf="nameError['required']">this field is must!</p>
-        <p *ngIf="nameError['minlength']">this field is must at least 3 digits</p>
+        <div *ngIf="nameError['required']" class="error-messege">this field is must!</div>
+        <div *ngIf="nameError['minlength']" class="error-messege">this field is must at least 3 digits</div>
     </ng-container>
+    <mat-icon> vpn_key</mat-icon>
 
-    <!-- Password input -->
     <mdb-form-control class="mb-4">
-        <input mdbInput type="password" id="form2Example2" class="form-control" formControlName="password"/>
+        <input mdbInput type="password" id="form2Example2" class="form-control" formControlName="password" />
         <label mdbLabel class="form-label" for="form2Example2">Password</label>
     </mdb-form-control>
     <ng-container *ngIf="this.LoginForm.controls['password'].errors as passwordError">
-        <p *ngIf="passwordError['required']">this field is must!</p>
-        <p *ngIf="passwordError['minlength']">this field is must at least 6 digits</p>
+        <div *ngIf="passwordError['required']" class="error-messege">this field is must!</div>
+        <div *ngIf="passwordError['minlength']" class="error-messege">this field is must at least 6 digits</div>
     </ng-container>
-
-    <!-- 2 column grid layout for inline styling -->
     <div class="row mb-4">
         <div class="col d-flex justify-content-center">
-            <!-- Checkbox -->
             <div class="form-check">
                 <input mdbCheckbox class="form-check-input" type="checkbox" value="" id="form2Example31"
                     [checked]="true" />
@@ -33,22 +29,18 @@
         </div>
 
         <div class="col">
-            <!-- Simple link -->
             <a href="#!">Forgot password?</a>
         </div>
     </div>
 
-    <!-- Submit button -->
-    <button mdbRipple type="button" class="btn btn-primary btn-block mb-4" 
-    (click)="login()" [disabled]="this.LoginForm.invalid">Sign in</button>
+    <button mdbRipple type="button" class="btn btn-primary btn-block mb-4" (click)="login()"
+        [disabled]="this.LoginForm.invalid">Sign in</button>
 
-    <!-- Register buttons -->
     <div class="text-center">
-        <p>Not a member? <a  (click)="toRegister()">Register</a></p>
+        <p>Not a member? <a (click)="toRegister()"><mat-icon>person_add</mat-icon></a></p>
         <p>or sign up with:</p>
         <button mdbRipple type="button" class="btn btn-secondary btn-floating mx-1">
             <i class="fab fa-facebook-f"></i>
-            <!-- <fa-icon [icon]="faFacebookF"></fa-icon> -->
 
         </button>
 

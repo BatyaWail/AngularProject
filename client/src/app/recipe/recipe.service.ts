@@ -14,7 +14,6 @@ export class RecipeService {
   }
 
   public baseUrlRecipe='https://localhost:7100/api/Recipe'
-  // public baseUrlRecipe='https://localhost:7196/api/Recipe'
   
   constructor(private http: HttpClient) { }
 
@@ -22,10 +21,7 @@ export class RecipeService {
     return this.http.get<Recipe[]>(this.baseUrlRecipe)
   }
 
-  // addUser(user: User):Observable<User> {
-  //   // this.productsList.push(product)
-  //   return this.http.post<User>(this.baseUrl, user)
-  // }
+
   getRecipeById(id:number): Observable<Recipe> {
     return this.http.get<Recipe>(`${this.baseUrlRecipe}/${id}`)
   }

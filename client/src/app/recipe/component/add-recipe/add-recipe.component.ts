@@ -31,7 +31,6 @@ export class AddRecipeComponent implements OnInit {
     private fb: FormBuilder,
     private _categoryService: CategoryService,
     private _recipeService: RecipeService,
-    private _userService: UserService,
     private router: Router
   ) { }
 
@@ -57,11 +56,6 @@ export class AddRecipeComponent implements OnInit {
   get ingredients(): FormArray {
     return this.recipeForm.get('ingredients') as FormArray;
   }
-
-  // get ingredients(): FormArray {
-  //   return this.recipeForm.get('ingredients') as FormArray;
-  // }
-
   addIngredient(): void {
     this.ingredients.push(this.fb.control(''));
     console.log(this.ingredients)
@@ -87,32 +81,12 @@ export class AddRecipeComponent implements OnInit {
 
     this.categoryId = this.recipeForm.value.category
     console.log("-----categoryid--------", this.categoryId)
-    // this.categoryService.getCategoryById(this.categoryId).subscribe({
-    //   next: (res) => {
-    //     this.recipe.category = res;
-    //     console.log("this.recipe.category", this.recipe.category)
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //   }
-    // });
-    // this.recipe.category=this.categoryId
-    this.userName = sessionStorage.getItem("currentUserName")?.toString()
+       this.userName = sessionStorage.getItem("currentUserName")?.toString()
     console.log("userName-------------------", this.userName)
-    // this._userService.getUserByName(this.userName?.toString()).subscribe({
-    //   next: (res) => {
-    //     this.recipe.user = res;
-    //     console.log("this.recipe.user", this.recipe.user)
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //   }
-    // });
     this.recipe.user = this.userName
     this.recipe.category = this.recipeForm.value.category
     this.recipe.name = this.recipeForm.value.name
     this.recipe.minutes = this.recipeForm.value.minutes
-    // this.recipe.category = this.recipeForm.value.category
     this.recipe.ingredients = this.recipeForm.value.ingredients
     this.recipe.difficultyLevel = this.recipeForm.value.difficultyLevel
     this.recipe.imgRouting = this.recipeForm.value.imgRouting
@@ -140,10 +114,7 @@ export class AddRecipeComponent implements OnInit {
 
 
   resetForm(): void {
-    // Reset form values
     this.recipeForm.reset();
-
-    // Clear ingredient and instruction arrays
     this.ingredients.clear();
     this.instructions.clear();
   }
@@ -155,8 +126,6 @@ export class AddRecipeComponent implements OnInit {
   checkUserLogin() {
     console.log("before move");
     if (sessionStorage.getItem("currentUserName") === null) {
-      // שמור את נתוני הניווט לשימוש לאחר ההרשמה
-      // this.loginRedirectUrl = ;
       Swal.fire({
         title: "The system was not logged in!",
         text: "Move to login!",
@@ -168,10 +137,6 @@ export class AddRecipeComponent implements OnInit {
       });
 
     }
-    // this.router.navigate(["recipe/recipe-details", this.recipeChild?.id]);
-
     console.log("after move");
-
-
   }
 }

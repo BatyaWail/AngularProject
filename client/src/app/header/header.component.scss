@@ -1,34 +1,6 @@
-// // #homeButton{
-// //     position: absolute;
-// //     left: 20vh;
-// // }
-// h1{
-//     text-align: center;
-//     padding: 25vh;
-// }
-// .itemInNav{
-//     // margin-top: 3vh;
-
-// }
-// ul{
-//     margin-top: 1.5vh;
-//     margin-bottom:10vh;
-//     margin-left: 10vh;
-//     margin-right: 5vh;
-// }
-// nav{
-//     max-height: 10vh;
-// }
-// button{
-//     height: 5vh;
-// }
-/* header.component.css */
-
-/* Add padding-top to the component to create space for the fixed header */
 :host {
     display: block;
     padding-top: 10vh;
-    /* Adjust the value based on your header's height */
 }
 
 #homeButton {
@@ -41,14 +13,12 @@ h1 {
     padding: 25vh;
 }
 
-.itemInNav {
-    /* margin-top: 3vh; */
-}
+
 
 ul {
     margin-top: 1.5vh;
     margin-bottom: 10vh;
-    margin-left: 10vh;
+    margin-left: 5vh;
     margin-right: 5vh;
 }
 
@@ -58,5 +28,18 @@ nav {
 .myButtons{
     margin: 1.5vh;
     height: 5vh;
+    background-color: white !important;
+    color: #3387df !important; 
 
+}
+.myButtons mat-icon{
+    color: #3387df !important; 
+
+}
+#userName{
+    background-color: #3387df !important;
+    color: white !important; 
+    margin: 1.5vh;
+    height: 7vh;
+    width: 10vh;
 }

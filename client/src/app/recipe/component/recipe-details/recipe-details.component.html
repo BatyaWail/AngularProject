@@ -3,7 +3,7 @@
   <div class="row g-0">
     <div class="col-md-4">
       <img src="{{ recipeDetails.imgRouting }}" alt="{{ recipeDetails.name }}"
-        onerror="this.src='https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp'"
+        onerror="this.src='../../../../assets/recipe2.jpg'"
         class="img-fluid rounded-start" id="imgRouting">
     </div>
     <div class="col-md-8">
@@ -12,9 +12,7 @@
         <div class="col-md-4" *ngIf="recipeDetails.category" style="display: flex;">
           <p>category: {{this.category.name}} | </p>
             <img src="{{this.category.icon}}" alt="{{this.category.name}}"
-            onerror="this.src='https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp'"
             class="img-fluid rounded-start" id="icon-categort" >
-            <!-- <mat-icon>category</mat-icon> -->
         </div>
         <ng-container *ngIf="recipeDetails.difficultyLevel">
           <ng-container class="difficulty-stars">
@@ -22,23 +20,27 @@
               <mat-icon>star</mat-icon>
             </span>
           </ng-container>
+          <ng-container class="difficulty-stars">
+            <span *ngFor="let star of this.getDifficultyStars(this.allDificulltyLevel-this.recipeDetails.difficultyLevel)">
+              <mat-icon>star_border</mat-icon>
+            </span>
+          </ng-container>
         </ng-container>
-        <div> 
-          <!-- <mat-icon>swatch</mat-icon> -->
-          Preparation time: {{ recipeDetails.minutes | formatTime }}</div>
+        <div class="col-md-4" style="display: flex;"> 
+          <mat-icon>schedule</mat-icon>
+         <div>  {{ recipeDetails.minutes | formatTime }}</div>
+        </div>
         <ng-container *ngIf="recipeDetails.ingredients" >ingredients: 
           <div *ngFor="let item of recipeDetails.ingredients">
-            <!-- <img *ngIf="item" src="{{item.icon}}" alt="{{item}}" class="component-icon" /> -->
             {{item}}
           </div>
         </ng-container>
-        <!-- <mat-icon >instructions</mat-icon> -->
         instructions: 
         <div *ngFor="let item of recipeDetails.instructions">
           <p class="preparation-step">{{item}}</p>
         </div>
         <p class="card-text">
-          <small class="text-muted">Last updated on {{recipeDetails.dateAdd}} by {{recipeDetails.user}}</small>
+          <small class="text-muted">create on {{recipeDetails.dateAdd}} by {{recipeDetails.user}}</small>
         </p>
       </div>
     </div>
@@ -55,64 +57,3 @@
   </div>
   </div>
 </ng-container>
-
-<!-- 
-<div class="container" id="mtContainer" style="position: fixed;left: 0;right: 0;">
-  <section class="mx-auto my-5" style="max-width: 23rem;">
-      
-    <div class="card">
-      <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/8-col/img (5).jpg" class="img-fluid" />
-        <a href="#!">
-          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-        </a>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title font-weight-bold"><a>La Sirena restaurant</a></h5>
-        <ul class="list-unstyled list-inline mb-0">
-          <li class="list-inline-item me-0">
-            <i class="fas fa-star text-warning fa-xs"> </i>
-          </li>
-          <li class="list-inline-item me-0">
-            <i class="fas fa-star text-warning fa-xs"></i>
-          </li>
-          <li class="list-inline-item me-0">
-            <i class="fas fa-star text-warning fa-xs"></i>
-          </li>
-          <li class="list-inline-item me-0">
-            <i class="fas fa-star text-warning fa-xs"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fas fa-star-half-alt text-warning fa-xs"></i>
-          </li>
-          <li class="list-inline-item">
-            <p class="text-muted">4.5 (413)</p>
-          </li>
-        </ul>
-        <p class="mb-2">$ • American, Restaurant</p>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the bulk of the
-          card's content.
-        </p>
-        <hr class="my-4" />
-        <p class="lead"><strong>Tonight's availability</strong></p>
-        <ul class="list-unstyled list-inline d-flex justify-content-between">
-          <li class="list-inline-item me-0">
-            <div class="chip me-0">5:30PM</div>
-          </li>
-          <li class="list-inline-item me-0">
-            <div class="chip bg-secondary text-white me-0">7:30PM</div>
-          </li>
-          <li class="list-inline-item me-0">
-            <div class="chip me-0">8:00PM</div>
-          </li>
-          <li class="list-inline-item me-0">
-            <div class="chip me-0">9:00PM</div>
-          </li>
-        </ul>
-        <a href="#!" class="btn btn-link link-secondary p-md-1 mb-0">Button</a>
-      </div>
-    </div>
-    
-  </section>
-</div> -->

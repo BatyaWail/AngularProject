@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent {
   constructor(private router:Router){}
-  toHome(){
-    this.router.navigate(["home"])
-  }
+
 
 }

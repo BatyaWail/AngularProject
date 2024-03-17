@@ -10,8 +10,7 @@ import { faFacebookF, faGoogle, faTwitter, faGithub } from '@fortawesome/free-br
 
 @Component({
   selector: 'app-login',
-  // standalone: true,
-  // imports: [],
+
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -47,7 +46,6 @@ export class LoginComponent implements OnInit {
   login() {
     this._userService.getUserByName(this.LoginForm.value.name).subscribe({
       next: (res) => {
-        // console.log(res);
         this.user = res;
         console.log(this.user)
         sessionStorage.setItem('currentUserName', this.LoginForm.value.name);
@@ -61,11 +59,8 @@ export class LoginComponent implements OnInit {
             icon: "info",
             title: "Oops...",
             text: "User does not exist yet, transferred to registration page!!!",
-            // footer: '<a href="#">Why do I have this issue?</a>'
           });
-          // sessionStorage.setItem('name', this.LoginForm.value.name);
           sessionStorage.setItem('isGetFromLogin', 'true')
-          // this.router.navigate(["user/register"])
           this.toRegister()
 
         }
@@ -106,7 +101,6 @@ export class LoginComponent implements OnInit {
       else{
         let id=sessionStorage.getItem("recipe-details")
         console.log(id)
-        // this.router.navigate([`${{this.path}}`])
         if(id!=null){
           console.log("id",id)
           this.router.navigate(["recipe/recipe-details/", parseInt(id)]);
@@ -124,7 +118,6 @@ export class LoginComponent implements OnInit {
         icon: "error",
         title: "Oops...",
         text: "Paswword Incorrect!!!",
-        // footer: '<a href="#">Why do I have this issue?</a>'
       });
     }
   }
