@@ -5,8 +5,7 @@ This project is a Recipe website application built using Angular 17 for the clie
 ## Features
 
 - User-friendly interface for browsing recipes.
-- Search functionality to find recipes based on keywords.
-- Ability to save favorite recipes for future reference.
+- Search functionality to find recipes based on keywords as well as by category and preparation time, so that everyone can find the recipe that suits them.
 - Integration with external APIs for recipe data.
 - Utilizes routing mechanism for efficient navigation between components.
 
@@ -67,5 +66,3 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
-
