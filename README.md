@@ -31,8 +31,8 @@ This project is a Recipe website application built using Angular 17 for the clie
 
 This repository contains two main directories:
 
-- `file-client`: Contains the Angular client-side application.
-- `file-server`: Contains the .NET server-side application.
+- `client`: Contains the Angular client-side application.
+- `server`: Contains the .NET server-side application.
 
 ## Getting Started
 
