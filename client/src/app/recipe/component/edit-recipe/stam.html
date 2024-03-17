@@ -1,0 +1,69 @@
+<form [formGroup]="recipeForm" style="display: flex; flex-wrap: wrap;" >
+    <br/>
+      <mat-form-field style="display: flex; flex-wrap: wrap;">
+        <mat-select formControlName="category" placeholder="category" required>
+          <mat-option *ngFor="let category of categories" [value]="category.name">
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br/>
+      <mat-form-field style="display: flex; flex-wrap: wrap;">
+        <input
+          matInput
+          type="number"
+          placeholder="time in minutes"
+          required
+          formControlName="minutes"
+        >
+      </mat-form-field>
+      <br/>
+      <mat-form-field style="display: flex; flex-wrap: wrap;">
+        <mat-select formControlName="difficultyLevel" placeholder="difficultyLevel" required>
+          <mat-option value="1">easy</mat-option>
+          <mat-option value="2">medium</mat-option>
+          <mat-option value="3">hard</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br/>
+      <button mat-raised-button color="primary" type="button" (click)="addIngredient('')">add ingredient</button>
+    
+      <div formArrayName="ingredients" style="display: flex; flex-wrap: wrap;">
+        <div *ngFor="let item of recipeDetails.ingredients "> {{addIngredient(item) }}</div>
+  
+        <div *ngFor="let ingredient of recipeForm.get('ingredients').controls; let i = index">
+          <mat-form-field>
+            <input matInput [formControlName]="i" placeholder="ingredient" required>
+          </mat-form-field>
+            <button mat-icon-button (click)="removeIngredient(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+      </div>
+      <br/>
+    
+      <button mat-raised-button color="primary" type="button" (click)="addInstruction('')">add instruction</button>
+     <div formArrayName="instructions" style="display: flex; flex-wrap: wrap;">
+      <div *ngFor="let item of recipeDetails.instructions "> {{this.addInstruction(item)}}</div>
+        <div *ngFor="let instruction of recipeForm.get('instructions').controls; let i = index">
+          <mat-form-field>
+            <input matInput [formControlName]="i" placeholder="instruction" required>
+          </mat-form-field>
+            <button mat-icon-button (click)="removeInstructions(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+      </div>
+    
+      <br/>
+    
+    
+      <mat-form-field style="display: flex; flex-wrap: wrap;">
+        <input matInput formControlName="imgRouting" placeholder="imagePath(Optional)" required="" >
+      </mat-form-field>
+      <br/>
+    
+      <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">save</button>
+      <button mat-raised-button color="primary" type="reset" (click)="resetForm()">reset</button>
+  
+    </form>

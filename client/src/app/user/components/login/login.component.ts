@@ -5,6 +5,8 @@ import { UserService } from '../../user.service';
 import Swal from 'sweetalert2';
 import { log } from 'console';
 import { Router } from '@angular/router';
+import { faFacebookF, faGoogle, faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
+
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,7 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
+[x: string]: any;
   public LoginForm!: FormGroup;
   public user!: User
   private timerInterval: any;

@@ -16,12 +16,17 @@
 
   </mat-card>
   -->
-  <div class="card" style="width: 18rem;" (click)="recipeDetails()">
-    <img src="{{ recipeChild.imgRouting }}" alt="{{ recipeChild.name }}" onerror="this.src='https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp'" class="card-img-top">
-    <div class="card-body">
-      <h2 class="card-title">{{recipeChild.name}}</h2>
-      <p class="card-text">Duration of preparation: {{recipeChild.minutes}}</p>
-      <p class="card-text">Difficulty Level: {{recipeChild.difficultyLevel}}</p>
-    </div>
+<div class="card" style="width: 18rem;" >
+  <img src="{{ recipeChild.imgRouting }}" alt="{{ recipeChild.name }}"
+    onerror="this.src='../../../../assets/recipe2.jpg'" class="card-img-top">
+  <div class="card-body">
+    <h2 class="card-title">{{recipeChild.name}}</h2>
+    <p class="card-text">Duration of preparation: {{recipeChild.minutes}}</p>
+    <p class="card-text">Difficulty Level: {{recipeChild.difficultyLevel}}</p>
   </div>
   
+  <button mat-button (click)="recipeDetails()">
+    more details
+  <mat-icon>details</mat-icon>
+  </button>
+</div>

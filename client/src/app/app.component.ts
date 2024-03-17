@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { UserModule } from './user/user.module';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 //
 
 
@@ -8,7 +10,7 @@ import { UserModule } from './user/user.module';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,UserModule],
+  imports: [RouterOutlet,FooterComponent,HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

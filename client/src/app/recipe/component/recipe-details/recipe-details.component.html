@@ -1,3 +1,4 @@
+<ng-container class=".body">
 <div class="card mb-3 container card" id="recipe-details">
   <div class="row g-0">
     <div class="col-md-4">
@@ -8,30 +9,34 @@
     <div class="col-md-8">
       <div class="card-body">
         <h1 class="card-title">{{ recipeDetails.name }}</h1>
-        <div class="col-md-4" *ngIf="recipeDetails.category"  >
-          <p>{{this.category.name}}</p>
+        <div class="col-md-4" *ngIf="recipeDetails.category" style="display: flex;">
+          <p>category: {{this.category.name}} | </p>
             <img src="{{this.category.icon}}" alt="{{this.category.name}}"
             onerror="this.src='https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp'"
             class="img-fluid rounded-start" id="icon-categort" >
+            <!-- <mat-icon>category</mat-icon> -->
         </div>
         <ng-container *ngIf="recipeDetails.difficultyLevel">
-          <ng-container class="difficulty-stars">difficultyLevel: 
-            <span *ngFor="let star of this.getDifficultyStars(recipeDetails.difficultyLevel)">*</span>
+          <ng-container class="difficulty-stars">
+            <span *ngFor="let star of this.getDifficultyStars(recipeDetails.difficultyLevel)">
+              <mat-icon>star</mat-icon>
+            </span>
           </ng-container>
         </ng-container>
-        <p>Preparation time: {{ recipeDetails.minutes | formatTime }}</p>
-
+        <div> 
+          <!-- <mat-icon>swatch</mat-icon> -->
+          Preparation time: {{ recipeDetails.minutes | formatTime }}</div>
         <ng-container *ngIf="recipeDetails.ingredients" >ingredients: 
           <div *ngFor="let item of recipeDetails.ingredients">
             <!-- <img *ngIf="item" src="{{item.icon}}" alt="{{item}}" class="component-icon" /> -->
             {{item}}
           </div>
         </ng-container>
+        <!-- <mat-icon >instructions</mat-icon> -->
         instructions: 
         <div *ngFor="let item of recipeDetails.instructions">
           <p class="preparation-step">{{item}}</p>
         </div>
-
         <p class="card-text">
           <small class="text-muted">Last updated on {{recipeDetails.dateAdd}} by {{recipeDetails.user}}</small>
         </p>
@@ -39,14 +44,17 @@
     </div>
     <div class="btn-group shadow-0" role="group" aria-label="Basic example" *ngIf="currentUserName==recipeDetails.user">
       <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark" (click)="deleteRecipe()">
+        <mat-icon>delete</mat-icon>
         delete
       </button>
       <button type="button" class="btn btn-outline-secondary" data-mdb-color="dark" (click)="editRecipe()">
+        <mat-icon>edit</mat-icon>
         edit
       </button>
     </div>
   </div>
   </div>
+</ng-container>
 
 <!-- 
 <div class="container" id="mtContainer" style="position: fixed;left: 0;right: 0;">

@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import { FooterComponent } from '../footer/footer.component';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [MdbCheckboxModule,FooterComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    standalone: true,
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss',
+    imports: [MdbCheckboxModule, FooterComponent, HeaderComponent]
 })
 export class HomeComponent {
   constructor(private router: Router){}

@@ -1,4 +1,4 @@
-<h1>{{recipeDetails.name}}</h1>
+<!-- 
 <form [formGroup]="recipeForm" style="display: flex; flex-wrap: wrap;" >
   <br/>
     <mat-form-field style="display: flex; flex-wrap: wrap;">
@@ -27,10 +27,10 @@
       </mat-select>
     </mat-form-field>
     <br/>
-    <button mat-raised-button color="primary" type="button" (click)="addIngredient()">add ingredient</button>
+    <button mat-raised-button color="primary" type="button" (click)="addIngredient('')">add ingredient</button>
   
     <div formArrayName="ingredients" style="display: flex; flex-wrap: wrap;">
-      <div *ngFor="let item of recipeDetails.ingredients "> {{this.addIngredient(item.icon)}}</div>
+      <div *ngFor="let item of recipeDetails.ingredients "> {{addIngredient(item) }}</div>
 
       <div *ngFor="let ingredient of recipeForm.get('ingredients').controls; let i = index">
         <mat-form-field>
@@ -43,7 +43,7 @@
     </div>
     <br/>
   
-    <button mat-raised-button color="primary" type="button" (click)="addInstruction()">add instruction</button>
+    <button mat-raised-button color="primary" type="button" (click)="addInstruction('')">add instruction</button>
    <div formArrayName="instructions" style="display: flex; flex-wrap: wrap;">
     <div *ngFor="let item of recipeDetails.instructions "> {{this.addInstruction(item)}}</div>
       <div *ngFor="let instruction of recipeForm.get('instructions').controls; let i = index">
@@ -67,4 +67,147 @@
     <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">save</button>
     <button mat-raised-button color="primary" type="reset" (click)="resetForm()">reset</button>
 
-  </form> 
+  </form>  -->
+<h1>{{recipeDetails.name}}</h1>
+<form [formGroup]="recipeForm">
+  <!-- <div class="row mb-4">
+    <div class="col">
+      <mdb-form-control>
+        <input mdbInput type="text" id="form6Example1" class="form-control" />
+        <label mdbLabel class="form-label" for="form6Example1">First name</label>
+      </mdb-form-control>
+    </div>
+    <div class="col">
+      <mdb-form-control>
+        <input mdbInput type="text" id="form6Example2" class="form-control" />
+        <label mdbLabel class="form-label" for="form6Example2">Last name</label>
+      </mdb-form-control>
+    </div>
+  </div> -->
+
+
+  <div class="row mb-4">
+    <div class="col">
+      <mdb-form-control>
+        <input mdbInput type="number" id="form6Example3" class="form-control"          
+        placeholder="time in minutes"
+        required
+        formControlName="minutes"/>
+        <label mdbLabel class="form-label" for="form6Example3">time in minutes</label>
+      </mdb-form-control>
+    </div>
+    <div class="col">
+      <mdb-form-control class="form-group">
+        <select formControlName="category" class="form-select" required>
+          <option value="">category</option>
+          <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+        </select>
+      </mdb-form-control>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col">
+      <mdb-form-control>
+        <select formControlName="difficultyLevel" placeholder="difficultyLevel" required class="form-select"  >
+          <option value="">difficultyLevel</option>
+          <option value="1">easy</option>
+          <option value="2">medium</option>
+          <option value="1">hard</option>
+        </select>
+        <!-- <label mdbLabel class="form-label" for="form6Example4">Address</label> -->
+      </mdb-form-control>
+    </div>
+    <div class="col">
+      <mdb-form-control>
+        <input mdbInput type="text" id="form6Example5" class="form-control" formControlName="imgRouting" placeholder="imagePath(Optional)" required="" />
+        <label mdbLabel class="form-label" for="form6Example5">imgRouting</label>
+      </mdb-form-control>
+    </div>
+  </div>
+
+ 
+
+  <div class="row mb-4">
+    <div class="col">
+      <mdb-form-control class="form-outline mb-4" >
+        <textarea mdbInput class="form-control" id="form6Example7" rows="4" formArrayName="ingredients">{{ingredientsText}}</textarea>
+        <label mdbLabel class="form-label" for="form6Example7">ingredients</label>
+      </mdb-form-control>
+    </div>
+    <div class="col">
+      <mdb-form-control class="form-outline mb-4">
+        <textarea mdbInput class="form-control" id="form6Example7" rows="4" formArrayName="instructions">{{instructionsText}}</textarea>
+        <label mdbLabel class="form-label" for="form6Example7">instructions</label>
+      </mdb-form-control>
+    </div>
+  </div>
+
+  <div class="form-check d-flex justify-content-center mb-4" >
+    <input mdbCheckbox class="form-check-input me-2" type="checkbox" value="" id="form6Example8" [checked]="true" />
+    <label class="form-check-label" for="form6Example8"> Create an account? </label>
+  </div>
+
+  <!-- <button mdbRipple type="button" class="btn btn-primary btn-block mb-4">
+    Place order
+  </button> -->
+  <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">save</button>
+      <button mat-raised-button color="primary" type="reset" (click)="resetForm()">reset</button>
+</form>
+
+<!-- <form [formGroup]="recipeForm">
+  <div class="row mb-4">
+    <mat-form-field style="display: flex; flex-wrap: wrap;">
+      <mat-select formControlName="category" placeholder="category" required>
+        <mat-option *ngFor="let category of categories" [value]="category.name">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="col">
+      <mdb-form-control>
+        <input mdbInput type="text" id="form6Example1" class="form-control" />
+        <label mdbLabel class="form-label" for="form6Example1">First name</label>
+      </mdb-form-control>
+    </div>
+    <div class="col">
+      <mdb-form-control>
+        <input mdbInput type="text" id="form6Example2" class="form-control" />
+        <label mdbLabel class="form-label" for="form6Example2">Last name</label>
+      </mdb-form-control>
+    </div>
+  </div>
+
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="text" id="form6Example3" class="form-control" />
+    <label mdbLabel class="form-label" for="form6Example3">Company name</label>
+  </mdb-form-control>
+
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="text" id="form6Example4" class="form-control" />
+    <label mdbLabel class="form-label" for="form6Example4">Address</label>
+  </mdb-form-control>
+
+  <mdb-form-control class="mb-4">
+    <input mdbInput type="email" id="form6Example5" class="form-control" />
+    <label mdbLabel class="form-label" for="form6Example5">Email</label>
+  </mdb-form-control>
+
+  <mdb-form-control class="form-outline mb-4">
+    <input mdbInput type="number" id="form6Example6" class="form-control" />
+    <label mdbLabel class="form-label" for="form6Example6">Phone</label>
+  </mdb-form-control>
+
+  <mdb-form-control class="form-outline mb-4">
+    <textarea mdbInput class="form-control" id="form6Example7" rows="4"></textarea>
+    <label mdbLabel class="form-label" for="form6Example7">Additional information</label>
+  </mdb-form-control>
+
+  <div class="form-check d-flex justify-content-center mb-4">
+    <input mdbCheckbox class="form-check-input me-2" type="checkbox" value="" id="form6Example8" [checked]="true" />
+    <label class="form-check-label" for="form6Example8"> Create an account? </label>
+  </div>
+
+  <button mdbRipple type="button" class="btn btn-primary btn-block mb-4">
+    Place order
+  </button>
+</form> -->

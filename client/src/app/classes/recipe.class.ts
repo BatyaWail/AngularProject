@@ -9,9 +9,9 @@ export class Recipe{
     category!:string
     minutes!:number
     difficultyLevel!:number
-    // ingredients!: string[]
+    ingredients!: string[]
 
-    ingredients!: Ingredients[]//רכיבים
+    // ingredients!: Ingredients[]//רכיבים
     instructions!:string[]//הוראות
     user!:User
     imgRouting!:string

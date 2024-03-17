@@ -175,11 +175,13 @@ export class EditRecipeComponent implements OnInit {
   recipeForm: FormGroup | any;
   categories: Category[] = [];
   categoryId: any;
-  recipe: Recipe = new Recipe();
   userName: any;
-
-  public recipeId!: number
+  recipe!:Recipe
+  recipeId!: number
   recipeDetails!: Recipe;
+  ingredientsText: string = 'not-good'; 
+  instructionsText: string = 'not-good'; 
+  
   category!: Category;
   constructor(
     private fb: FormBuilder,
@@ -199,22 +201,10 @@ export class EditRecipeComponent implements OnInit {
           this.recipeDetails = res
           console.log("11111resipeDetails", this.recipeDetails)
           this.getCategories()
+          this.ingredientsText = this.recipeDetails.ingredients.join(', ');
+          this.instructionsText = this.recipeDetails.instructions.join(', ');
           this.initForm()
-          // this.recipeOwner = this.recipeDetails.user
-      //     this._categoryService.getAllCategory().subscribe({
-      //       next: (res) => {
-      //         this.categories = res;
-      //         setTimeout(() => {
-      //           this.initForm();
-      //         }, 0);
-      //       },
-      //       error: (err) => {
-      //         console.log(err);
-      //       }
-      //     });
-      //   },
-      //   error: (err) => {
-      //     console.log(err);
+
         }
       })
     })
@@ -244,8 +234,41 @@ export class EditRecipeComponent implements OnInit {
       difficultyLevel: [this.recipeDetails.difficultyLevel, Validators.required],
       dateAdded: [this.recipeDetails.dateAdd, Validators.required],
       category: [this.recipeDetails.category],
-      ingredients: this.fb.array([]),
-      instructions: this.fb.array([]),
+      ingredients: [this.ingredientsText],
+      instructions: [this.instructionsText],
+      imgRouting: [this.recipeDetails.imgRouting]
+    });
+    // this.initFormData()
+  }
+  initFormData(): void {
+    this.recipeForm.patchValue({
+      // recipeName: this.recipeDetails.name,
+      // categoryId: this.recipeDetails.category,
+      // preparationTimeInMinutes: recipe.preparationTimeInMinutes,
+      // difficultyLevel: recipe.difficultyLevel,
+      // ingredients: recipe.ingredients.join(','),
+      // instructions: recipe.instructions.join(','),
+      minutes: this.recipeDetails.minutes,
+      difficultyLevel:this.recipeDetails.difficultyLevel,
+      dateAdded: this.recipeDetails.dateAdd,
+      category: this.recipeDetails.category,
+      //    formData.instructions = formData.instructions.split(',');
+    //formData.ingredients = formData.ingredients.split(',');
+      ingredients: this.recipeDetails.ingredients.join(','),
+      instructions: this.recipeDetails.instructions.join(','),
+      imgRouting:this.recipeDetails.imgRouting
+      // Set values for other form controls based on recipe data
+    })
+    console.log("name", this.recipeDetails.name);
+    this.recipeForm = this.fb.group({
+      minutes: [this.recipeDetails.minutes, Validators.required],
+      difficultyLevel: [this.recipeDetails.difficultyLevel, Validators.required],
+      dateAdded: [this.recipeDetails.dateAdd, Validators.required],
+      category: [this.recipeDetails.category],
+      //    formData.instructions = formData.instructions.split(',');
+    //formData.ingredients = formData.ingredients.split(',');
+      ingredients: [this.recipeDetails.ingredients.join(',')],
+      instructions: [this.recipeDetails.instructions.join(',')],
       imgRouting: [this.recipeDetails.imgRouting]
     });
   }
@@ -258,13 +281,14 @@ export class EditRecipeComponent implements OnInit {
   //   return this.recipeForm.get('ingredients') as FormArray;
   // }
 
-  addIngredient(name:string='1'): void {
+  addIngredient(name:string): void {
+    console.log("name: ",name)
     this.ingredients.push(this.fb.control(name));
-    console.log(this.ingredients)
+    // console.log(this.ingredients)
   } 
-  addInstruction(name:string='1'): void {
+  addInstruction(name:string): void {
     this.instructions.push(this.fb.control(name));
-    console.log(this.instructions)
+    // console.log(this.instructions)
   }
   removeInstructions(index: number): void {
     this.instructions.removeAt(index);
@@ -280,24 +304,34 @@ export class EditRecipeComponent implements OnInit {
     console.log("-----categoryid--------", this.categoryId)
     this.userName = sessionStorage.getItem("currentUserName")?.toString()
     console.log("userName-------------------", this.userName)
-    this.recipe.user = this.userName
-    this.recipe.category = this.recipeForm.value.category
-    this.recipe.name = this.recipeForm.value.name
-    this.recipe.minutes = this.recipeForm.value.minutes
+    // this.recipe.user = this.recipeDetails.user
+    this.recipeDetails.category = this.recipeForm.value.category
+    // this.recipe.name = this.recipeForm.value.name
+    this.recipeDetails.minutes = this.recipeForm.value.minutes
     // this.recipe.category = this.recipeForm.value.category
-    this.recipe.ingredients = this.recipeForm.value.ingredients
-    this.recipe.difficultyLevel = this.recipeForm.value.difficultyLevel
-    this.recipe.imgRouting = this.recipeForm.value.imgRouting
-    this.recipe.instructions = this.recipeForm.value.instructions
-    this.recipe.dateAdd = new Date()
-    console.log("--------------------recipe--------------------", this.recipe)
+    this.recipeDetails.difficultyLevel = this.recipeForm.value.difficultyLevel
+    this.recipeDetails.imgRouting = this.recipeForm.value.imgRouting
+    console.log("before ingredientsText=", this.ingredientsText, "instructionsTex= ", this.instructionsText)
 
-    this._recipeService.addRecipe(this.recipe).subscribe({
+    this.ingredientsText=this.recipeForm.value.ingredients
+    this.instructionsText=this.recipeForm.value.instructions
+console.log("ingredientsText=", this.ingredientsText, "instructionsTex= ", this.instructionsText)
+console.log("--------------------recipe in onSumbit---1--------------------", this.recipeDetails)
+
+    // let i1=this.recipeForm.value.instructionsText.split(",")
+    this.recipeDetails.instructions = this.instructionsText.split(",")  
+    this.recipeDetails.ingredients = this.ingredientsText.split(",")
+
+    // this.recipe.dateAdd = this.recipeDetails.dateAdd
+    console.log("--------------------recipe in onSumbit--------------------", this.recipeDetails)
+
+    this._recipeService.updateRecipeById(this.recipeDetails.id,this.recipeDetails).subscribe({
       next: (res) => {
-        console.log(res)
+        this.recipe=res
+        console.log(this.recipe)
         Swal.fire({
           title: "Browo!!!!",
-          text: "your new recipe saved!!!!",
+          text: "your update in the recipe saved!!!!",
           icon: "success"
         });
         this.router.navigate(["home/"])
@@ -322,5 +356,52 @@ export class EditRecipeComponent implements OnInit {
       this.categories = categories;
     });
   }
+  // onSubmit2(): void {
+  //   this.submitted = true;
+
+  //   // if (this.recipeForm.invalid) {
+  //   //   return; // Prevent submission if form is invalid
+  //   // }
+
+  //   // Create a copy of the form value to avoid modifying the original
+  //   const formData = { ...this.recipeForm.value };
+  //   // Split the instructions string into an array based on comma separators
+  //   formData.instructions = formData.instructions.split(',');
+  //   formData.ingredients = formData.ingredients.split(',');
+  //   // Restrict unnecessary type assertion (if 'Recipe' interface matches form structure)
+  //   const editedRecipe: Recipe = formData; // Assuming 'Recipe' interface matches form structure
+  //   console.log(editedRecipe);
+  //   //const editedRecipe = this.recipeForm.value as Recipe;
+  //   // editedRecipe.recipeId = this.recipeId;
+  //   this.isLoading = true;
+  //   this.recipeService.editRecipe(this.recipeId, editedRecipe)
+  //     .subscribe(
+  //       () => {
+  //         this.isLoading = false;
+  //         this.handleSuccess();
+  //       },
+  //       error => {
+  //         this.isLoading = false;
+  //         this.handleError(error);
+  //       }
+  //     );
+  // }
+  // handleSuccess(): void {
+  //   this.snackBar.open('Recipe edited successfully!', '', {
+  //     duration: 3000,
+  //     horizontalPosition: 'center',
+  //     verticalPosition: 'top'
+  //   });
+  //   this.router.navigate(['/recipe']);
+  // }
+
+  // handleError(error: any): void {
+  //   console.error(error);
+  //   this.snackBar.open('An error occurred. Please try again.', '', {
+  //     duration: 3000,
+  //     horizontalPosition: 'center',
+  //     verticalPosition: 'top'
+  //   });
+  // }
 
 }

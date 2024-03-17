@@ -32,4 +32,7 @@ export class RecipeService {
   remove(id:number): Observable<Recipe> {
     return this.http.delete<Recipe>(`${this.baseUrlRecipe}/${id}`)
   }
+  updateRecipeById(id:number, recipe:Recipe): Observable<Recipe> {
+    return this.http.put<Recipe>(`${this.baseUrlRecipe}/${id}`,recipe)
+  }
 }

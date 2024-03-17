@@ -1,0 +1,62 @@
+// // #homeButton{
+// //     position: absolute;
+// //     left: 20vh;
+// // }
+// h1{
+//     text-align: center;
+//     padding: 25vh;
+// }
+// .itemInNav{
+//     // margin-top: 3vh;
+
+// }
+// ul{
+//     margin-top: 1.5vh;
+//     margin-bottom:10vh;
+//     margin-left: 10vh;
+//     margin-right: 5vh;
+// }
+// nav{
+//     max-height: 10vh;
+// }
+// button{
+//     height: 5vh;
+// }
+/* header.component.css */
+
+/* Add padding-top to the component to create space for the fixed header */
+:host {
+    display: block;
+    padding-top: 10vh;
+    /* Adjust the value based on your header's height */
+}
+
+#homeButton {
+    position: absolute;
+    left: 20vh;
+}
+
+h1 {
+    text-align: center;
+    padding: 25vh;
+}
+
+.itemInNav {
+    /* margin-top: 3vh; */
+}
+
+ul {
+    margin-top: 1.5vh;
+    margin-bottom: 10vh;
+    margin-left: 10vh;
+    margin-right: 5vh;
+}
+
+nav {
+    max-height: 10vh;
+}
+.myButtons{
+    margin: 1.5vh;
+    height: 5vh;
+
+}

@@ -37,54 +37,54 @@
     <button (click)="save()" [disabled]="!this.RegisterForm.valid">save</button>
 </form> -->
 
-<form [formGroup]="this.RegisterForm">
-  <!-- 2 column grid layout with text inputs for the first and last names -->
-  <!-- Email input -->
+  <form [formGroup]="this.RegisterForm">
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+    <!-- Email input -->
 
 
-  <mdb-form-control class="mb-4">
-    <input mdbInput type="text" id="form3Example1" class="form-control" formControlName="name" />
-    <label mdbLabel class="form-label" for="form3Example1">Full name</label>
-  </mdb-form-control>
-  <ng-container *ngIf="this.RegisterForm.controls['name'].errors as nameError">
-    <div *ngIf="nameError['required']">this field is must!</div>
-    <div *ngIf="nameError['minlength']">this field is must at least 3 digits</div>
-  </ng-container>
-  <!-- <div class="col">
+    <mdb-form-control class="mb-4">
+      <input mdbInput type="text" id="form3Example1" class="form-control" formControlName="name" />
+      <label mdbLabel class="form-label" for="form3Example1">Full name</label>
+    </mdb-form-control>
+    <ng-container *ngIf="this.RegisterForm.controls['name'].errors as nameError">
+      <div *ngIf="nameError['required']">this field is must!</div>
+      <div *ngIf="nameError['minlength']">this field is must at least 3 digits</div>
+    </ng-container>
+    <!-- <div class="col">
         <mdb-form-control class="form-outline">
           <input mdbInput type="text" id="form3Example2" class="form-control" />
           <label mdbLabel class="form-label" for="form3Example2">Last name</label>
         </mdb-form-control>
       </div> -->
 
-  <!-- Email input -->
-  <mdb-form-control class="mb-4">
-    <input mdbInput type="email" id="form3Example3" class="form-control" formControlName="email" />
-    <label mdbLabel class="form-label" for="form3Example3">Email address</label>
-  </mdb-form-control>
-  <ng-container *ngIf="this.RegisterForm.controls['email'].errors as emailError">
-    <p *ngIf="emailError['email']">this field is must be email</p>
-  </ng-container>
-  <mdb-form-control class="mb-4">
-    <input mdbInput type="text" id="form3Example3" class="form-control" formControlName="address" />
-    <label mdbLabel class="form-label" for="form3Example3">address</label>
-  </mdb-form-control>
-  <ng-container *ngIf="this.RegisterForm.controls['address'].errors as addressError">
-    <p *ngIf="addressError['minlength']">this field is must at least 3 digits</p>
-  </ng-container>
-  <mdb-form-control class="mb-4">
-    <input mdbInput type="text" id="form3Example3" class="form-control" formControlName="password" />
-    <label mdbLabel class="form-label" for="form3Example3">password</label>
-  </mdb-form-control>
-  <ng-container *ngIf="this.RegisterForm.controls['password'].errors as passwordError">
-    <p *ngIf="passwordError['minlength']">this field is must at least 6 digits</p>
-    <p *ngIf="passwordError['required']">this field is required!</p>
+    <!-- Email input -->
+    <mdb-form-control class="mb-4">
+      <input mdbInput type="email" id="form3Example3" class="form-control" formControlName="email" />
+      <label mdbLabel class="form-label" for="form3Example3">Email address</label>
+    </mdb-form-control>
+    <ng-container *ngIf="this.RegisterForm.controls['email'].errors as emailError">
+      <p *ngIf="emailError['email']">this field is must be email</p>
+    </ng-container>
+    <mdb-form-control class="mb-4">
+      <input mdbInput type="text" id="form3Example3" class="form-control" formControlName="address" />
+      <label mdbLabel class="form-label" for="form3Example3">address</label>
+    </mdb-form-control>
+    <ng-container *ngIf="this.RegisterForm.controls['address'].errors as addressError">
+      <p *ngIf="addressError['minlength']">this field is must at least 3 digits</p>
+    </ng-container>
+    <mdb-form-control class="mb-4">
+      <input mdbInput type="text" id="form3Example3" class="form-control" formControlName="password" />
+      <label mdbLabel class="form-label" for="form3Example3">password</label>
+    </mdb-form-control>
+    <ng-container *ngIf="this.RegisterForm.controls['password'].errors as passwordError">
+      <p *ngIf="passwordError['minlength']">this field is must at least 6 digits</p>
+      <p *ngIf="passwordError['required']">this field is required!</p>
 
-  </ng-container>
-  
+    </ng-container>
 
-  <!-- Repeat Password input -->
-  <!-- <mdb-form-control class="mb-4">
+
+    <!-- Repeat Password input -->
+    <!-- <mdb-form-control class="mb-4">
         <input
           mdbInput
           type="password"
@@ -96,34 +96,34 @@
         >
       </mdb-form-control> -->
 
-  <!-- Checkbox -->
-  <div class="form-check d-flex justify-content-center mb-4">
-    <input mdbCheckbox class="form-check-input me-2" type="checkbox" value="" id="form2Example32" [checked]="true" />
-    <label class="form-check-label" for="form2Example32">
-      Subscribe to our newsletter
-    </label>
-  </div>
+    <!-- Checkbox -->
+    <div class="form-check d-flex justify-content-center mb-4">
+      <input mdbCheckbox class="form-check-input me-2" type="checkbox" value="" id="form2Example32" [checked]="true" />
+      <label class="form-check-label" for="form2Example32">
+        Subscribe to our newsletter
+      </label>
+    </div>
 
-  <!-- Submit button -->
-  <button mdbRipple type="button" class="btn btn-primary btn-block mb-4" (click)="save()">Sign up</button>
+    <!-- Submit button -->
+    <button mdbRipple type="button" class="btn btn-primary btn-block mb-4" (click)="save()">Sign up</button>
 
-  <!-- Register buttons -->
-  <div class="text-center">
-    <p>or sign up with:</p>
-    <button mdbRipple type="button" class="btn btn-secondary btn-floating mx-1">
-      <i class="fab fa-facebook-f"></i>
-    </button>
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p>or sign up with:</p>
+      <button mdbRipple type="button" class="btn btn-secondary btn-floating mx-1">
+        <i class="fab fa-facebook-f"></i>
+      </button>
 
-    <button mdbRipple type="button" class="btn btn-secondary btn-floating mx-1">
-      <i class="fab fa-google"></i>
-    </button>
+      <button mdbRipple type="button" class="btn btn-secondary btn-floating mx-1">
+        <i class="fab fa-google"></i>
+      </button>
 
-    <button mdbRipple type="button" class="btn btn-secondary btn-floating mx-1">
-      <i class="fab fa-twitter"></i>
-    </button>
+      <button mdbRipple type="button" class="btn btn-secondary btn-floating mx-1">
+        <i class="fab fa-twitter"></i>
+      </button>
 
-    <button mdbRipple type="button" class="btn btn-secondary btn-floating mx-1">
-      <i class="fab fa-github"></i>
-    </button>
-  </div>
-</form>
+      <button mdbRipple type="button" class="btn btn-secondary btn-floating mx-1">
+        <i class="fab fa-github"></i>
+      </button>
+    </div>
+  </form>

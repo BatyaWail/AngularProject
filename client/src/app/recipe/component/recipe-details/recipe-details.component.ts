@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeService } from '../../recipe.service';
 import { Category } from '../../../classes/category.class';
 import { CategoryService } from '../../../category.service';
+import Swal from 'sweetalert2';
 // import { FormatTimePipe } from '../../../format-time.pipe';
 // import "../../../../assets/top-view-baking-ingredients_217819-57.jpg"
 @Component({
@@ -66,15 +67,47 @@ export class RecipeDetailsComponent implements OnInit {
     return stars;
   }
   deleteRecipe() {
-    this._recipeService.remove(this.recipeDetails.id).subscribe({
-      next: (res) => {
-        // this.recipeDetails = res;
-        console.log(res)
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
+    
+
+    
+    // this._recipeService.remove(this.recipeDetails.id).subscribe({
+    //   next: (res) => {
+    //     // this.recipeDetails = res;
+    //     console.log(res)
+        
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   }
+    // });
+    // this.router.navigate(["recipe/all-recipe"]);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result)=>{
+      if (result.isConfirmed) {
+      this._recipeService.remove(this.recipeDetails.id).subscribe({
+        next: (res) => {
+          // this.recipeDetails = res;
+          console.log(res)
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your recipe has been deleted.",
+            icon: "success"
+          });
+          this.router.navigate(["recipe/all-recipe"]);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
+    })
   }
   editRecipe() {
     this.router.navigate(["recipe/edit-recipe/", this.recipeId]);

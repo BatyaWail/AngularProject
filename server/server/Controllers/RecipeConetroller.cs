@@ -108,6 +108,124 @@ namespace server.Controllers
   },
   user: "batya", // Replace with actual user ID
   imgRouting: "../../../../assets/brownies.jpg"
+),
+
+
+                new Recipe(
+  "Chocolate Chip Cookies",
+  "Baking",
+  25,
+  2,
+  DateTime.Now,
+  new List<string>() {
+    "2 1/4 cups all-purpose flour",
+    "1/2 teaspoon baking soda",
+    "1 cup unsalted butter, room temperature",
+    "1/2 cup granulated sugar",
+    "1 cup packed light-brown sugar",
+    "1 teaspoon salt",
+    "2 teaspoons pure vanilla extract",
+    "2 large eggs",
+    "2 cups semisweet and/or milk chocolate chips"
+  },
+  new List<string>() {
+    "Preheat oven to 350°F (175°C).",
+    "... (remaining instructions)"
+  },
+  user: "batya",
+  imgRouting: "../../../../assets/chocolate_chip_cookies.jpg"
+),
+
+new Recipe(
+  "Chicken Alfredo Pasta",
+  "Dinner",
+  35,
+  3,
+  DateTime.Now,
+  new List<string>() {
+    "8 ounces fettuccine",
+    "2 boneless, skinless chicken breasts",
+    "Salt and pepper to taste",
+    "2 tablespoons olive oil",
+    "2 cloves garlic, minced",
+    "1 cup heavy cream",
+    "1/2 cup grated Parmesan cheese",
+    "2 tablespoons chopped fresh parsley"
+  },
+  new List<string>() {
+    "Cook fettuccine according to package instructions.",
+    "... (remaining instructions)"
+  },
+  user: "chani",
+  imgRouting: "../../../../assets/chicken_alfredo_pasta.jpg"
+),
+
+new Recipe(
+  "Classic Caesar Salad",
+  "Easy",
+  15,
+  1,
+  DateTime.Now,
+  new List<string>() {
+    "1 head romaine lettuce, chopped",
+    "1/4 cup grated Parmesan cheese",
+    "1/2 cup croutons",
+    "1/4 cup Caesar salad dressing"
+  },
+  new List<string>() {
+    "In a large bowl, toss together lettuce, Parmesan cheese, and croutons.",
+    "... (remaining instructions)"
+  },
+  user: "yehudit",
+  imgRouting: "../../../../assets/caesar_salad.jpg"
+),
+
+new Recipe(
+  "Spaghetti Carbonara",
+  "Medium",
+  25,
+  2,
+  DateTime.Now,
+  new List<string>() {
+    "8 ounces spaghetti",
+    "4 slices bacon, diced",
+    "2 cloves garlic, minced",
+    "2 large eggs",
+    "1/2 cup grated Parmesan cheese",
+    "Salt and black pepper to taste",
+    "2 tablespoons chopped fresh parsley"
+  },
+  new List<string>() {
+    "Cook spaghetti according to package instructions.",
+    "... (remaining instructions)"
+  },
+  user: "chani",
+  imgRouting: "../../../../assets/spaghetti_carbonara.jpg"
+),
+
+new Recipe(
+  "Apple Pie",
+  "Dessert",
+  60,
+  3,
+  DateTime.Now,
+  new List<string>() {
+    "Pastry for double-crust pie (9 inches)",
+    "3/4 cup granulated sugar",
+    "1/4 cup all-purpose flour",
+    "1/2 teaspoon ground cinnamon",
+    "1/2 teaspoon ground nutmeg",
+    "1/8 teaspoon salt",
+    "6 cups thinly sliced peeled tart apples",
+    "1 tablespoon lemon juice",
+    "1 tablespoon butter"
+  },
+  new List<string>() {
+    "Preheat oven to 375°F (190°C).",
+    "... (remaining instructions)"
+  },
+  user: "batya",
+  imgRouting: "../../../../assets/apple_pie.jpg"
 )
         };
 
@@ -164,15 +282,35 @@ namespace server.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Recipe updatedRecipe)
         {
-            if (id != updatedRecipe.Id)
-            {
-                return BadRequest();
-            }
+            ////if (id != updatedRecipe.Id)
+            ////{
+            ////    return BadRequest();
+            ////}
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            ////if (!ModelState.IsValid)
+            ////{
+            ////    return BadRequest(ModelState);
+            ////}
+
+            //var recipe = _recipes.Find(r => r.Id == updatedRecipe.Id);
+            ////if (recipe == null)
+            ////{
+            ////    return NotFound();
+            ////}
+            //if (recipe != null)
+            //{
+            //    recipe.Name = updatedRecipe.Name;
+            //    recipe.Category = updatedRecipe.Category;
+            //    recipe.Minutes = updatedRecipe.Minutes;
+            //    recipe.DifficultyLevel = updatedRecipe.DifficultyLevel;
+            //    recipe.Ingredients = updatedRecipe.Ingredients;
+            //    recipe.Instructions = updatedRecipe.Instructions;
+            //    recipe.User = updatedRecipe.User;
+            //    recipe.ImgRouting = updatedRecipe.ImgRouting;
+            //}
+            //return Ok(recipe);
+
+            ////return NoContent();
 
             var recipe = _recipes.Find(r => r.Id == id);
             if (recipe == null)
@@ -193,17 +331,16 @@ namespace server.Controllers
         }
 
         // DELETE: api/recipes/{id} - מחיקת מתכון
-        [HttpDelete("{name}")]
-        public IActionResult Delete(string name)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
-            var recipe = _recipes.Find(r => r.Name == name);
+            var recipe = _recipes.Find(r => r.Id == id);
             if (recipe == null)
             {
                 return NotFound();
             }
-
             _recipes.Remove(recipe);
-            return NoContent();
+            return Ok(recipe);
         }
     }
 }

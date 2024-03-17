@@ -1,25 +1,3 @@
-<!-- <form [formGroup]="this.LoginForm">
-    <div>
-        <label>name</label>
-        <input type="text" formControlName="name">
-        <ng-container *ngIf="this.LoginForm.controls['name'].errors as nameError">
-            <p *ngIf="nameError['required']">this field is must!</p>
-            <p *ngIf="nameError['minlength']">this field is must at least 3 digits</p>
-        </ng-container>
-    </div>
-    <br>
-    <div>
-        <label>password</label>
-        <input type="password" formControlName="password">
-        <ng-container *ngIf="this.LoginForm.controls['password'].errors as passwordError">
-            <p *ngIf="passwordError['required']">this field is must!</p>
-            <p *ngIf="passwordError['minlength']">this field is must at least 6 digits</p>
-        </ng-container>
-    </div>
-    
-  
-    <button (click)="login()" [disabled]="!this.LoginForm.valid">login</button>
-</form> -->
 <form [formGroup]="this.LoginForm">
     <br/>
     <!-- Email input -->
@@ -70,6 +48,8 @@
         <p>or sign up with:</p>
         <button mdbRipple type="button" class="btn btn-secondary btn-floating mx-1">
             <i class="fab fa-facebook-f"></i>
+            <!-- <fa-icon [icon]="faFacebookF"></fa-icon> -->
+
         </button>
 
         <button mdbRipple type="button" class="btn btn-secondary btn-floating mx-1">

@@ -83,10 +83,11 @@
 
 
 form{
-  padding-top: 10vh;
+  padding-bottom: 13vh; /* גובה של 10% מהגובה של המסך */
+  padding-top: 3vh;
   // padding-left: 50vh;
   // padding-right: 50vh;
-
+  height: 100vh;
 }
 
 
@@ -98,5 +99,10 @@ form{
 .mat-form-field {
   margin: 0;
   padding: 0;
+}
+form{
+  padding-left: 50vh;
+  padding-right: 50vh;
+
 }
 
